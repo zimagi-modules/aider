@@ -1,0 +1,5 @@
+name: aider
+
+version: 0.0.1
+compatibility: ">=0.14.0,<0.15"
+requirements: requirements.txt

@@ -1,0 +1,104 @@
+command_mixins:
+  aider:
+    class: AiderMixin
+    parameters:
+      directory:
+        parser: variable
+        type: str
+        optional: false
+        help: 'Git repository root directory'
+        value_label: PATH
+        tags: [mcp, aider]
+      query:
+        parser: variable
+        type: str
+        optional: false
+        help: 'query for language model'
+        value_label: MESSAGE
+        tags: [mcp, aider]
+      instruction:
+        parser: variable
+        type: str
+        optional: false
+        help: 'instruction for language model'
+        value_label: MESSAGE
+        tags: [mcp, aider]
+      model:
+        parser: variable
+        type: str
+        default: openrouter/deepseek/deepseek-r1-0528
+        optional: '--model'
+        help: 'Aider primary language model name'
+        value_label: NAME
+        tags: [mcp, aider]
+      write_files:
+        parser: variables
+        type: str
+        optional: '--write-files'
+        help: 'Aider writable file paths'
+        value_label: PATH
+        tags: [mcp, aider]
+      read_files:
+        parser: variables
+        type: str
+        optional: '--read-files'
+        help: 'Aider read-only file paths'
+        value_label: PATH
+        tags: [mcp, aider]
+      commit:
+        parser: flag
+        flag: '--commit'
+        help: 'whether to commit updates to files'
+        tags: [mcp, aider]
+      repo_map_tokens:
+        parser: variable
+        type: int
+        default: 1024
+        optional: '--repo-map-tokens'
+        help: 'maximum allowed repository map tokens'
+        value_label: COUNT
+        tags: [mcp, aider]
+      write_tokens:
+        parser: variable
+        type: int
+        default: 4000
+        optional: true
+        help: 'maximum number of written tokens'
+        value_label: COUNT
+        tags: [mcp, aider]
+
+command:
+  aider:
+    ask:
+      base: mcp
+      mixins: [aider]
+      parse:
+        - directory
+        - query
+        - model
+        - read_files
+        - repo_map_tokens
+    code:
+      base: mcp
+      mixins: [aider]
+      parse:
+        - directory
+        - instruction
+        - model
+        - write_files
+        - read_files
+        - commit
+        - repo_map_tokens
+        - write_tokens
+    architect:
+      base: mcp
+      mixins: [aider]
+      parse:
+        - directory
+        - instruction
+        - model
+        - write_files
+        - read_files
+        - commit
+        - repo_map_tokens
+        - write_tokens

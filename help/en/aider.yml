@@ -1,0 +1,21 @@
+aider:
+  ask:
+    overview: |-
+      Ask Aider AI a question about code or strategy without modifying files
+
+    description: |-
+      Use this command to pose a question to the Aider AI assistant about the codebase or project strategy within the specified repository root <directory>. The <query> should clearly state what you want to understand, and you may optionally specify relative file paths <read_files> to focus the AI's attention on specific files in read-only mode. This command is ideal for gathering architectural insights, design feedback, or understanding existing implementation details without making any changes to the repository.
+
+  architect:
+    overview: |-
+      Generate or update repository files using Aider AI with a two-pass strategy
+
+    description: |-
+      Use this command to instruct Aider AI to create or modify files within the specified repository root <directory> based on a high-level <instruction>. You can optionally define which relative file paths are writable via <write_files>, which relative file paths are read-only via <read_files>, and limit output size using <write_tokens>. The command executes in two passes: first, Aider strategizes how to fulfill the instruction; second, it generates or updates the target files accordingly. This process enables precise, architecturally sound changes while maintaining control over which parts of the codebase are modified.
+
+  code:
+    overview: |-
+      Directly create or update files using Aider AI without a planning step
+
+    description: |-
+      Use this command to apply an <instruction> to the codebase in the specified repository root <directory>, immediately generating or updating files as needed. You may specify which relative file paths Aider AI can write to using <write_files>, provide additional context with read-only relative file paths <read_files>, and control the output size with <write_tokens>. This command skips an initial strategy phase and proceeds straight to file modification, making it useful for fast, targeted updates when the task is well-defined.
