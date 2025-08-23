@@ -4,7 +4,7 @@ from systems.commands.index import CommandMixin
 from utility.aider import Aider
 
 
-class AiderCommand(CommandMixin("aider")):
+class AiderMixin(CommandMixin("aider")):
 
     def get_aider_session(self, error_if_no_context=True):
         def _get_aider_session(read_files):
