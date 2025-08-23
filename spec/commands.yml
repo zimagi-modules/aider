@@ -62,7 +62,7 @@ command_mixins:
         parser: variable
         type: int
         default: 4000
-        optional: true
+        optional: '--write-tokens'
         help: 'maximum number of written tokens'
         value_label: COUNT
         tags: [mcp, aider]
